@@ -29,3 +29,5 @@ Route::get('/test', function () {
 Route::get('/get-data', [User::class, 'getData']);
 
 Route::get('/consult-persist-company', [Companies::class, 'consultPersistCompany']);
+
+Route::get('/consult-persist-orders', [Orders::class, 'consultPersistOrders']);
