@@ -25,4 +25,4 @@ Route::get('/test', function () {
 });
 
 
-Route::get('/get-data/{cpf}', [User::class, 'getData']);
+Route::get('/get-data', [User::class, 'getData']);
