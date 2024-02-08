@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Companies;
 use App\Http\Controllers\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -25,4 +26,6 @@ Route::get('/test', function () {
 });
 
 
-Route::get('/get-data/{cpf}', [User::class, 'getData']);
+Route::get('/get-data', [User::class, 'getData']);
+
+Route::get('/consult-persist-company', [Companies::class, 'consultPersistCompany']);
