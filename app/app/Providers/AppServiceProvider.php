@@ -7,6 +7,7 @@ use App\Repositories\CompaniesRepository;
 use App\Repositories\Interface\CompaniesRepositoryInterface;
 use App\Repositories\Interface\MockyRepositoryInterface;
 use App\Repositories\Interface\OrdersRepositoryInterface;
+use App\Repositories\Interface\OrdersTrackingRepositoryInterface;
 use App\Repositories\Interface\ReceiversRepositoryInterface;
 use App\Repositories\Interface\SendersRepositoryInterface;
 use App\Repositories\Interface\UsersRepositoryInterface;
@@ -14,6 +15,7 @@ use App\Repositories\OrdersRepository;
 use App\Repositories\ReceiversRepository;
 use App\Repositories\SendersRepository;
 use App\Repositories\UsersRepository;
+use App\Services\OrdersTrackingRepository;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -51,6 +53,11 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(
             OrdersRepositoryInterface::class,
             OrdersRepository::class,
+        );
+
+        $this->app->bind(
+            OrdersTrackingRepositoryInterface::class,
+            OrdersTrackingRepository::class
         );
     }
 

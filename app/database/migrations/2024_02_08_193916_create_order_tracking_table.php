@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->uuid('order_id');
             $table->string('status');
-            $table->time('status_date');
+            $table->timestamp('status_date');
             $table->timestamps();
 
             $table->foreign('order_id')->references('uuid')->on('orders');

@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Repositories\Interface\MockyRepositoryInterface;
 use App\Repositories\Interface\OrdersRepositoryInterface;
+use App\Repositories\Interface\OrdersTrackingRepositoryInterface;
 use App\Repositories\Interface\ReceiversRepositoryInterface;
 use App\Repositories\Interface\SendersRepositoryInterface;
 use Illuminate\Http\JsonResponse;
@@ -13,10 +14,11 @@ class OrdersService
 {
 
     public function __construct(
-        protected OrdersRepositoryInterface    $ordersRepositoryInterface,
-        protected MockyRepositoryInterface     $mockyRepositoryInterface,
-        protected SendersRepositoryInterface   $sendersRepositoryInterface,
-        protected ReceiversRepositoryInterface $receiversRepositoryInterface
+        protected OrdersRepositoryInterface         $ordersRepositoryInterface,
+        protected MockyRepositoryInterface          $mockyRepositoryInterface,
+        protected SendersRepositoryInterface        $sendersRepositoryInterface,
+        protected ReceiversRepositoryInterface      $receiversRepositoryInterface,
+        protected OrdersTrackingRepositoryInterface $ordersTrackingRepositoryInterface
     ){}
 
     /**
@@ -58,6 +60,7 @@ class OrdersService
                 $this->receiversRepositoryInterface->getReceiverByUuid($order['_destinatario']['_cpf'])
             );
 
+            $this->ordersTrackingRepositoryInterface->persistOrderTracking($order['_rastreamento'], $order['_id']);
         }
 
         return ['message' => 'Orders persisted successfully', 'code' => Response::HTTP_OK];
