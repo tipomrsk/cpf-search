@@ -4,6 +4,8 @@ namespace App\Repositories\Interface;
 
 interface SendersRepositoryInterface
 {
-    public function persistSenders(array $senders);
+    public function persistSender(array $sender);
+
+    public function getSenderByUuid(string $senderName);
 
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\OrdersService;
 use Illuminate\Http\Request;
 
 class Orders extends Controller
@@ -13,6 +14,6 @@ class Orders extends Controller
 
     public function consultPersistOrders()
     {
-        return response()->json(['message' => 'Hello World!'], 200);
+        return $this->ordersService->consultPersistOrders();
     }
 }

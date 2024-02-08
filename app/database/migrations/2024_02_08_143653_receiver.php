@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('address');
             $table->string('state');
-            $table->string('cep', 7);
+            $table->string('cep', 8);
             $table->string('country');
             $table->string('lat');
             $table->string('lng');

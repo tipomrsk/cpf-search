@@ -4,7 +4,8 @@ namespace App\Repositories\Interface;
 
 interface ReceiversRepositoryInterface
 {
+    public function persistReceiver(array $receiver);
 
-    public function persistReceivers(array $receivers);
+    public function getReceiverByUuid(string $_cpf);
 
 }

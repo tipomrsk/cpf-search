@@ -5,12 +5,11 @@ namespace App\Repositories;
 use App\Models\Company;
 use App\Repositories\Interface\CompaniesRepositoryInterface;
 use Illuminate\Http\Response;
-use Illuminate\Support\Facades\Log;
 
 class CompaniesRepository implements CompaniesRepositoryInterface
 {
 
-    public function persistCompany (array $companys)
+    public function persistCompany (array $companys): array
     {
         try {
             foreach ($companys as $company) {

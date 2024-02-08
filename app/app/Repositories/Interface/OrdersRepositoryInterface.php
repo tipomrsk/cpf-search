@@ -4,6 +4,6 @@ namespace App\Repositories\Interface;
 
 interface OrdersRepositoryInterface
 {
-    public function persistOrders (array $orders);
+    public function persistOrder(array $order, string $senderUuid, string $receiverUuid);
 
 }
