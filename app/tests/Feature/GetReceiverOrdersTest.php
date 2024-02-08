@@ -1,6 +1,6 @@
 <?php
 
-test('with a valid CPF, get all orders on database', function () {
+test('with a valid CPF, and orders on database will return 200', function () {
     $cpf = '54795289042';
     $response = $this->get("api/receiver/orders?cpf={$cpf}");
     $response->assertStatus(200);
