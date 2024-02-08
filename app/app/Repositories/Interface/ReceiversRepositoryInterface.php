@@ -8,4 +8,6 @@ interface ReceiversRepositoryInterface
 
     public function getReceiverByUuid(string $_cpf);
 
+    public function getReceiverOrders(string $cpf);
+
 }

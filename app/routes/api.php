@@ -1,8 +1,11 @@
 <?php
 
-use App\Http\Controllers\Companies;
-use App\Http\Controllers\Orders;
-use App\Http\Controllers\User;
+use App\Http\Controllers\{
+    Companies,
+    Receiver,
+    User,
+    Orders
+};
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -29,6 +32,25 @@ Route::get('/test', function () {
 
 Route::get('/get-data', [User::class, 'getData']);
 
+
+/**
+ * TODO - COLOCAR AS ROTAS DENTRO DE UM PREFIXO PARA MANTER A ORGANIZAÇÃO
+ */
+
+// Rota para consultar e persistir as empresas
 Route::get('/consult-persist-company', [Companies::class, 'consultPersistCompany']);
 
+// Rota para consultar e persistir os pedidos
 Route::get('/consult-persist-orders', [Orders::class, 'consultPersistOrders']);
+
+
+//Grupo de rotas com o prefixo receiver
+Route::prefix('receiver')->group(function () {
+
+    Route::get('/orders', [Receiver::class, 'getReceiverOrders']);
+});
+
+
+
+
+

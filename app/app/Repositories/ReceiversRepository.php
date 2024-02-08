@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Helpers\StringHelper;
+use App\Models\Order;
 use App\Models\Receiver;
 use App\Repositories\Interface\ReceiversRepositoryInterface;
 use Illuminate\Http\Response;
@@ -42,5 +43,40 @@ class ReceiversRepository implements ReceiversRepositoryInterface
     public function getReceiverByUuid(string $cpf)
     {
         return Receiver::select('uuid')->where('cpf', $cpf)->first()->uuid;
+    }
+
+    public function getReceiverOrders(string $cpf): array
+    {
+        try {
+            $receiver = Order::select(
+                'orders.uuid',
+                'orders.company_id',
+                'orders.sender_id',
+                'orders.receiver_id',
+                'orders.volume',
+                'orders.created_at')
+                ->join('receivers', 'orders.receiver_id', 'receivers.uuid')
+                ->where('receivers.cpf', $cpf)
+                ->get()
+                ->toArray();
+
+            if (!$receiver) {
+                throw new \Exception("This receiver does not have any order.");
+            }
+
+            return [
+                'data' => $receiver,
+                'code' => Response::HTTP_OK,
+                'message' => 'Receiver orders found successfully'
+            ];
+        } catch (\Exception $e) {
+
+            Log::error($e->getMessage());
+            return [
+                'data' => [],
+                'code' => Response::HTTP_NO_CONTENT,
+                'message' => $e->getMessage()
+            ];
+        }
     }
 }
