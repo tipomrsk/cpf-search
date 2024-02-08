@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Repositories\Interface\CompaniesRepositoryInterface;
 use App\Repositories\Interface\MockyRepositoryInterface;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Response;
 
 class CompaniesService
@@ -14,7 +15,12 @@ class CompaniesService
         protected MockyRepositoryInterface     $mockyRepositoryInterface
     ){}
 
-    public function consultPersistCompany()
+    /**
+     * Método responsável por consultar as empresas no Mocky e persistir elas internamente
+     *
+     * @return JsonResponse
+     */
+    public function consultPersistCompany(): JsonResponse
     {
         try {
             $mockyCompanys = $this->mockyRepositoryInterface->getCompanys();
@@ -28,7 +34,7 @@ class CompaniesService
             return response()->json($persist, Response::HTTP_OK);
 
         } catch (\Exception $e){
-            return ['error' => $e->getMessage(), 'code' => $e->getCode()];
+            return response()->json($e->getMessage(), Response::HTTP_INTERNAL_SERVER_ERROR);
         }
 
     }
