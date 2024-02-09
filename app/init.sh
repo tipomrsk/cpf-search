@@ -1,5 +1,7 @@
 #!/bin/bash
-# Instala o agente de monitoramento
+
+#Aqui você tem a possibilidade também de instalar o agente de monitoramento
+
 # Instala as dependências da aplicação
 composer update
 chown -R www-data:www-data /var/www
