@@ -24,4 +24,3 @@ ADD php-fpm.conf /usr/local/etc/php-fpm.conf
 ADD www.conf /usr/local/etc/php-fpm.d/www.conf
 ADD opcache.ini /usr/local/etc/php/conf.d/opcache.ini
 ADD xdebug.ini /usr/local/etc/php/conf.d/xdebug.ini
-ADD newrelic.ini /usr/local/etc/php/conf.d/newrelic.ini

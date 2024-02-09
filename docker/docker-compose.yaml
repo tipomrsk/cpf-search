@@ -26,7 +26,20 @@ services:
     volumes:
       - ../nginx/config/conf.d:/etc/nginx/conf.d
       - ../nginx/config/nginx.conf:/etc/nginx/nginx.conf
+      - ../app:/var/www
     depends_on:
       - app
+      - mysql
     ports:
       - 80:80
+
+  # MySQL
+  mysql:
+    image: mysql
+    restart: always
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: cpfsearch
+    ports:
+      - 3306:3306
