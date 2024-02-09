@@ -40,7 +40,7 @@ function searchOrders () {
                             <p class="card-text"><b>Destinatário</b>: ${order.receiver_name}</p>
                         </div>
                         <div class="card-footer">
-                            <button class="btn btn-primary" onclick="seachOrderTracking('${order.uuid}')">Detalhes</button>
+                            <button class="btn btn-primary btn-order-tracking" order-uuid="${order.uuid}">Detalhes</button>
                         </div>
                     </div>
                 `);
@@ -55,34 +55,39 @@ function searchOrders () {
         })
 }
 
+$(document).on('click', '.btn-order-tracking', function (event) {
+    var uuid = event.target.getAttribute('order-uuid');
+
+    event.target.setAttribute('disabled', 'disabled');
+
+    axios.get(`../api/order/tracking?uuid=${uuid}`)
+        .then( ({ data }) => {
+
+            for (orderTracking of data.data) {
+
+                // Apenda as entregas no modal em cards
+                $('#generic-modal-body').append(`
+                            <div class="card">
+                                <div class="card-body">
+                                    <p class="card-text"><b>Status</b>: ${orderTracking.status}</p>
+                                    <p class="card-text"><b>Data</b>: ${orderTracking.status_date}</p>
+                                </div>
+                            </div>
+                    `);
+            }
+
+
+        })
+        .catch( error => {
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Erro ao buscar o rastreio da entrega!"
+            });
+        })
+
+})
 
 function seachOrderTracking (uuid) {
 
-        axios.get(`../api/order/tracking?uuid=${uuid}`)
-            .then( ({ data }) => {
-
-                // Mostra e manipula o modal
-                $('#generic-modal').modal('show')
-                $('#generic-modal-title').text('Status da Entrega')
-
-                for (orderTracking of data.data) {
-
-                    // Apenda as entregas no modal em cards
-                    $('#generic-modal-body').append(`
-                        <div class="card">
-                            <div class="card-body">
-                                <p class="card-text"><b>Status</b>: ${orderTracking.status}</p>
-                                <p class="card-text"><b>Data</b>: ${orderTracking.status_date}</p>
-                            </div>
-                        </div>
-                    `);
-                }
-            })
-            .catch( error => {
-                Swal.fire({
-                    icon: "error",
-                    title: "Oops...",
-                    text: "Erro ao buscar o rastreio da entrega!"
-                });
-            })
 }
