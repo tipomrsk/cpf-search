@@ -9,6 +9,13 @@ use Illuminate\Http\Response;
 class CompaniesRepository implements CompaniesRepositoryInterface
 {
 
+
+    /**
+     * Cria uma nova empresa de transporte
+     *
+     * @param array $companys
+     * @return array
+     */
     public function persistCompany (array $companys): array
     {
         try {

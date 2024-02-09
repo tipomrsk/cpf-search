@@ -46,6 +46,12 @@ class OrdersService
     }
 
 
+    /**
+     * Método responsável por splitar o payload da API e persistir as informações
+     *
+     * @param array $data
+     * @return array
+     */
     private function splitPayloadInfo(array $data)
     {
 

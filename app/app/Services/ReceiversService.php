@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Http\Requests\GetUserRequest;
 use App\Repositories\Interface\ReceiversRepositoryInterface;
+use Illuminate\Http\JsonResponse;
 
 class ReceiversService
 {
@@ -13,7 +14,13 @@ class ReceiversService
     ){}
 
 
-    public function getReceiverOrders ($cpf)
+    /**
+     * Método responsável por consultar os dados do destinatário
+     *
+     * @param $cpf
+     * @return JsonResponse
+     */
+    public function getReceiverOrders ($cpf): JsonResponse
     {
         $return = $this->receiversRepositoryInterface->getReceiverOrders($cpf);
 

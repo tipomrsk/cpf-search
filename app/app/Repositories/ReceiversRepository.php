@@ -13,6 +13,13 @@ use Illuminate\Support\Str;
 class ReceiversRepository implements ReceiversRepositoryInterface
 {
 
+
+    /**
+     * Cria o registro do destinatário
+     *
+     * @param array $receiver
+     * @return array
+     */
     public function persistReceiver(array $receiver): array
     {
         try {
@@ -40,6 +47,12 @@ class ReceiversRepository implements ReceiversRepositoryInterface
         }
     }
 
+    /**
+     * Busca o UUID pelo cpf do destinatário
+     *
+     * @param string $cpf
+     * @return null
+     */
     public function getReceiverByUuid(string $cpf)
     {
         $uuid = Receiver::select('uuid')->where('cpf', $cpf)->first();
@@ -52,6 +65,12 @@ class ReceiversRepository implements ReceiversRepositoryInterface
 
     }
 
+    /**
+     * Busca as entregas de um determinado destinatário
+     *
+     * @param string $cpf
+     * @return array
+     */
     public function getReceiverOrders(string $cpf): array
     {
         try {

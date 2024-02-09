@@ -8,6 +8,15 @@ use Illuminate\Http\Response;
 
 class OrdersRepository implements OrdersRepositoryInterface
 {
+
+    /**
+     * Cria uma nova entrega
+     *
+     * @param array $order
+     * @param string $senderUuid
+     * @param string $receiverUuid
+     * @return array
+     */
     public function persistOrder(array $order, string $senderUuid, string $receiverUuid)
     {
         try {

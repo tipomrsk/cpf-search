@@ -7,12 +7,12 @@ use App\Repositories\Interface\OrdersTrackingRepositoryInterface;
 class OrdersTrackingService
 {
     public function __construct(
-        protected OrdersTrackingRepositoryInterface $ordersTrackingRepository
+        protected OrdersTrackingRepositoryInterface $ordersTrackingRepositoryInterface
     ){}
 
     public function getOrdersStatusByUuid (string $orderUuid)
     {
-        return $this->ordersTrackingRepository->getOrdersStatusByUuid($orderUuid);
+        return $this->ordersTrackingRepositoryInterface->getOrdersStatusByUuid($orderUuid);
     }
 
 }

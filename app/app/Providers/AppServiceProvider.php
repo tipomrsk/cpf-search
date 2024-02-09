@@ -12,10 +12,10 @@ use App\Repositories\Interface\ReceiversRepositoryInterface;
 use App\Repositories\Interface\SendersRepositoryInterface;
 use App\Repositories\Interface\UsersRepositoryInterface;
 use App\Repositories\OrdersRepository;
+use App\Repositories\OrdersTrackingRepository;
 use App\Repositories\ReceiversRepository;
 use App\Repositories\SendersRepository;
 use App\Repositories\UsersRepository;
-use App\Services\OrdersTrackingRepository;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider

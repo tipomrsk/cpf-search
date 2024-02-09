@@ -11,6 +11,12 @@ class SendersRepository implements SendersRepositoryInterface
 {
 
 
+    /**
+     * Cria o registro do remetente
+     *
+     * @param array $sender
+     * @return array
+     */
     public function persistSender(array $sender)
     {
         try {
@@ -29,6 +35,12 @@ class SendersRepository implements SendersRepositoryInterface
         }
     }
 
+    /**
+     * Busca o UUID pelo nome do remetente
+     *
+     * @param string $senderName
+     * @return null
+     */
     public function getSenderByUuid(string $senderName)
     {
         $uuid = Sender::select('uuid')->where('name', $senderName)->first();

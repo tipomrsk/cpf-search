@@ -1,10 +1,9 @@
 <?php
 
-namespace App\Services;
+namespace App\Repositories;
 
 use App\Models\OrderTracking;
 use App\Repositories\Interface\OrdersTrackingRepositoryInterface;
-use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Response;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Log;
@@ -12,7 +11,14 @@ use Illuminate\Support\Facades\Log;
 class OrdersTrackingRepository implements OrdersTrackingRepositoryInterface
 {
 
-    public function persistOrderTracking(array $statusRastreamento, string $orderUuid)
+    /**
+     * Persiste o rastreamento da entrega
+     *
+     * @param array $statusRastreamento
+     * @param string $orderUuid
+     * @return array
+     */
+    public function persistOrderTracking(array $statusRastreamento, string $orderUuid): array
     {
         try {
 
@@ -35,7 +41,13 @@ class OrdersTrackingRepository implements OrdersTrackingRepositoryInterface
         }
     }
 
-    public function getOrdersStatusByUuid(string $orderUuid)
+    /**
+     * Busca os status da entrega pelo UUID
+     *
+     * @param string $orderUuid
+     * @return array
+     */
+    public function getOrdersStatusByUuid(string $orderUuid): array
     {
         try {
             $orderTracking = OrderTracking::select('status', 'status_date')
