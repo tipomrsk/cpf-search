@@ -28,15 +28,12 @@ Route::get('/test', function () {
 Route::get('/get-data', [User::class, 'getData']);
 
 
-/**
- * TODO - COLOCAR AS ROTAS DENTRO DE UM PREFIXO PARA MANTER A ORGANIZAÇÃO
- */
+Route::prefix('config')->group(function () {
+    Route::get('/consult-persist-company', [Companies::class, 'consultPersistCompany']);
 
-// Rota para consultar e persistir as empresas
-Route::get('/consult-persist-company', [Companies::class, 'consultPersistCompany']);
-
-// Rota para consultar e persistir os pedidos
-Route::get('/consult-persist-orders', [Orders::class, 'consultPersistOrders']);
+    // Rota para consultar e persistir os pedidos
+    Route::get('/consult-persist-orders', [Orders::class, 'consultPersistOrders']);
+});
 
 
 Route::prefix('receiver')->group(function () {
