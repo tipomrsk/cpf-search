@@ -29,8 +29,14 @@ class SendersRepository implements SendersRepositoryInterface
         }
     }
 
-    public function getSenderByUuid(string $senderName): string
+    public function getSenderByUuid(string $senderName)
     {
-        return Sender::select('uuid')->where('name', $senderName)->first()->uuid;
+        $uuid = Sender::select('uuid')->where('name', $senderName)->first();
+
+        if (!$uuid) {
+            return null;
+        }
+
+        return $uuid->uuid;
     }
 }
