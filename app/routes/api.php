@@ -1,11 +1,6 @@
 <?php
 
-use App\Http\Controllers\{
-    Companies,
-    Receiver,
-    User,
-    Orders
-};
+use App\Http\Controllers\{Companies, OrdersTracking, Receiver, User, Orders};
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -44,10 +39,12 @@ Route::get('/consult-persist-company', [Companies::class, 'consultPersistCompany
 Route::get('/consult-persist-orders', [Orders::class, 'consultPersistOrders']);
 
 
-//Grupo de rotas com o prefixo receiver
 Route::prefix('receiver')->group(function () {
-
     Route::get('/orders', [Receiver::class, 'getReceiverOrders']);
+});
+
+Route::prefix('orders')->group(function () {
+    Route::get('/status', [OrdersTracking::class, 'getOrdersStatusByUuid']);
 });
 
 

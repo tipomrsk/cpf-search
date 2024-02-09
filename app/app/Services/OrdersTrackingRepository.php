@@ -34,4 +34,31 @@ class OrdersTrackingRepository implements OrdersTrackingRepositoryInterface
             return ['message' => $e->getMessage()];
         }
     }
+
+    public function getOrdersStatusByUuid(string $orderUuid)
+    {
+        try {
+            $orderTracking = OrderTracking::select('status', 'status_date')
+                ->where('order_id', $orderUuid)
+                ->get()
+                ->toArray();
+
+            if (!$orderTracking) {
+                throw new \Exception("Order not found");
+            }
+
+            return [
+                'message' => 'Order found',
+                'code' => Response::HTTP_OK,
+                'data' => $orderTracking,
+            ];
+        } catch (\Exception $e) {
+            Log::error($e->getMessage());
+            return [
+                'message' => $e->getMessage(),
+                'code' => Response::HTTP_NO_CONTENT,
+                'data' => []
+            ];
+        }
+    }
 }

@@ -16,4 +16,9 @@ class Orders extends Controller
     {
         return $this->ordersService->consultPersistOrders();
     }
+
+    public function getOrderStatus ($request)
+    {
+        return $this->ordersService->getOrderStatus($request->uuid);
+    }
 }

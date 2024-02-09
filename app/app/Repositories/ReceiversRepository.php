@@ -65,17 +65,17 @@ class ReceiversRepository implements ReceiversRepositoryInterface
             }
 
             return [
-                'data' => $receiver,
                 'code' => Response::HTTP_OK,
-                'message' => 'Receiver orders found successfully'
+                'message' => 'Receiver orders found successfully',
+                'data' => $receiver,
             ];
         } catch (\Exception $e) {
 
             Log::error($e->getMessage());
             return [
-                'data' => [],
                 'code' => Response::HTTP_NO_CONTENT,
-                'message' => $e->getMessage()
+                'message' => $e->getMessage(),
+                'data' => [],
             ];
         }
     }
