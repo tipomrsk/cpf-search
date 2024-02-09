@@ -36,13 +36,20 @@ class ReceiversRepository implements ReceiversRepositoryInterface
             return ['message' => 'Senders persisted successfully', 'code' => Response::HTTP_OK];
         } catch (\Exception $e) {
             Log::error($e->getMessage());
-            return ['message' => $e->getMessage()];
+            return ['message' => $e->getMessage(), 'code' => Response::HTTP_BAD_REQUEST];
         }
     }
 
     public function getReceiverByUuid(string $cpf)
     {
-        return Receiver::select('uuid')->where('cpf', $cpf)->first()->uuid;
+        $uuid = Receiver::select('uuid')->where('cpf', $cpf)->first();
+
+        if (!$uuid) {
+            return null;
+        }
+
+        return $uuid->uuid;
+
     }
 
     public function getReceiverOrders(string $cpf): array
