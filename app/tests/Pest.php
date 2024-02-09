@@ -18,7 +18,7 @@ uses(
 
 uses(
     Tests\TestCase::class,
-)->in('Unit'); //refers to Tests\Unit
+)->in('Unit'); //refers to Tests\Unit\
 
 /*
 |--------------------------------------------------------------------------
