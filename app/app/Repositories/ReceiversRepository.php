@@ -51,11 +51,11 @@ class ReceiversRepository implements ReceiversRepositoryInterface
             $receiver = Order::select(
                 'orders.uuid',
                 'orders.company_id',
-                'orders.sender_id',
-                'orders.receiver_id',
-                'orders.volume',
-                'orders.created_at')
+                'receivers.name as receiver_name',
+                'senders.name as sender_name',
+                )
                 ->join('receivers', 'orders.receiver_id', 'receivers.uuid')
+                ->join('senders', 'orders.sender_id', 'senders.uuid')
                 ->where('receivers.cpf', $cpf)
                 ->get()
                 ->toArray();
