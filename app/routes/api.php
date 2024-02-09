@@ -43,8 +43,8 @@ Route::prefix('receiver')->group(function () {
     Route::get('/orders', [Receiver::class, 'getReceiverOrders']);
 });
 
-Route::prefix('orders')->group(function () {
-    Route::get('/status', [OrdersTracking::class, 'getOrdersStatusByUuid']);
+Route::prefix('order')->group(function () {
+    Route::get('/tracking', [OrdersTracking::class, 'getOrdersStatusByUuid']);
 });
 
 
