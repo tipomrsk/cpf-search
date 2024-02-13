@@ -2,11 +2,13 @@
 
 namespace App\Services;
 
-use App\Repositories\Interface\MockyRepositoryInterface;
-use App\Repositories\Interface\OrdersRepositoryInterface;
-use App\Repositories\Interface\OrdersTrackingRepositoryInterface;
-use App\Repositories\Interface\ReceiversRepositoryInterface;
-use App\Repositories\Interface\SendersRepositoryInterface;
+use App\Repositories\Interface\{
+    MockyRepositoryInterface,
+    OrdersRepositoryInterface,
+    OrdersTrackingRepositoryInterface,
+    ReceiversRepositoryInterface,
+    SendersRepositoryInterface
+};
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Response;
 

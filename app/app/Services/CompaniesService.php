@@ -2,8 +2,11 @@
 
 namespace App\Services;
 
-use App\Repositories\Interface\CompaniesRepositoryInterface;
-use App\Repositories\Interface\MockyRepositoryInterface;
+use App\Repositories\Interface\{
+    CompaniesRepositoryInterface,
+    MockyRepositoryInterface
+};
+
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Response;
 

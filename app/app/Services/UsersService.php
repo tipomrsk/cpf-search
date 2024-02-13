@@ -2,7 +2,6 @@
 
 namespace App\Services;
 
-use App\Http\Requests\GetUserRequest;
 use App\Repositories\Interface\UsersRepositoryInterface;
 use Illuminate\Http\Response;
 

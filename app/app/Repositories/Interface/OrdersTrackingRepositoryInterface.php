@@ -6,5 +6,5 @@ interface OrdersTrackingRepositoryInterface
 {
     public function persistOrderTracking(array $statusRastreamento, string $orderUuid);
 
-    public function getOrdersStatusByUuid(string $orderUuid);
+    public function getOrderStatusByUuid(string $orderUuid);
 }

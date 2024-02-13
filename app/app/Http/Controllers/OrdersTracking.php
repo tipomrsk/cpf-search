@@ -11,8 +11,8 @@ class OrdersTracking extends Controller
         protected OrdersTrackingService $ordersTrackingService
     ){}
 
-    public function getOrdersStatusByUuid (Request $request)
+    public function getOrderStatusByUuid (Request $request)
     {
-        return $this->ordersTrackingService->getOrdersStatusByUuid($request->uuid);
+        return $this->ordersTrackingService->getOrderStatusByUuid($request->uuid);
     }
 }

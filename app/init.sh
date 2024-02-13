@@ -4,20 +4,39 @@
 
 # Instala as dependências da aplicação
 composer update
+
+echo "------------------------------"
+echo "---- SETANDO PERMISSOES ------"
+echo "------------------------------"
 chown -R www-data:www-data /var/www
 chmod -R 755 /var/www/storage
 chmod -R 755 /var/www/bootstrap
 
 echo "------------------------------"
-echo "-- PHP ARTISAN --"
+echo "------ FIM PERMISSOES --------"
+echo "------------------------------"
+
+echo "------------------------------"
+echo "-------- PHP ARTISAN ---------"
 echo "------------------------------"
 
 php artisan storage:link
 php artisan migrate
 
 echo "------------------------------"
-echo "-- FIM PHP ARTISAN --"
+echo "------ FIM PHP ARTISAN -------"
 echo "------------------------------"
 
 # Inicia o PHP-FPM
 php-fpm
+
+echo "------------------------------"
+echo "------- cURL populate DB -----"
+echo "------------------------------"
+
+curl http://127.0.0.1/api/config/consult-persist-company
+curl http://127.0.0.1/api/config/consult-persist-orders
+
+echo "------------------------------"
+echo "-- FIM cURL  --"
+echo "------------------------------"

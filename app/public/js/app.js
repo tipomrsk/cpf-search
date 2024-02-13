@@ -1,12 +1,12 @@
-$(function () {
+$( () => {
 
-    // CPF Mask
+    // Máscara para o CPF
     $('#cpf').mask('000.000.000-00', {reverse: true});
 
     /**
-     * Captura evento de fechamento do modal pra limpar
+     * Captura evento de fechamento do modal pra limpar o conteúdo
      */
-    $('#generic-modal').on('hidden.bs.modal', function (event) {
+    $('#generic-modal').on('hidden.bs.modal',  () => {
         $('#generic-modal-body').html('');
     })
 
@@ -15,21 +15,20 @@ $(function () {
 
 function searchOrders () {
 
+    // Captura e remove caracteres especiais do CPF
     const cpf = $("#cpf").val().replace(/[^\w\s]/gi, '');
 
     axios.get(`../api/receiver/orders?cpf=${cpf}`)
         .then( ({ data }) => {
 
-            if ( data.length === 0 )
+            // Se não encontrar nenhuma entrega, mostra um alerta
+            if ( data.length === 0 ) {
                 return Swal.fire({
                     icon: "info",
                     title: "Ops...",
                     text: "Nenhuma entrega encontrada para este CPF!"
                 });
-
-            // Mostra e manipula o modal
-            $('#generic-modal').modal('show')
-            $('#generic-modal-title').text('Listagem de Entregas')
+            }
 
             // Apenda as entregas no modal em cards
             for (order of data) {
@@ -45,6 +44,10 @@ function searchOrders () {
                     </div>
                 `);
             }
+
+            // Mostra e manipula o modal
+            $('#generic-modal-title').text('Listagem de Entregas')
+            $('#generic-modal').modal('show')
         })
         .catch( error => {
             Swal.fire({
@@ -55,25 +58,31 @@ function searchOrders () {
         })
 }
 
-$(document).on('click', '.btn-order-tracking', function (event) {
-    var uuid = event.target.getAttribute('order-uuid');
+/**
+ * Evento de click no botão de "Detalhe" para rastrio
+ */
+$(document).on('click', '.btn-order-tracking', function (element) {
 
-    event.target.setAttribute('disabled', 'disabled');
+    // Captura atributo UUID do botão
+    const uuid = $(element.target).attr('order-uuid');
+
+    // Desabilita o botão para evitar multiplos clicks
+    $(element.target).prop('disabled', true);
 
     axios.get(`../api/order/tracking?uuid=${uuid}`)
         .then( ({ data }) => {
 
             for (orderTracking of data.data) {
 
-                // Apenda as entregas no modal em cards
+                // Apenda o status das entregas no modal em cards
                 $('#generic-modal-body').append(`
-                            <div class="card">
-                                <div class="card-body">
-                                    <p class="card-text"><b>Status</b>: ${orderTracking.status}</p>
-                                    <p class="card-text"><b>Data</b>: ${orderTracking.status_date}</p>
-                                </div>
-                            </div>
-                    `);
+                    <div class="card">
+                        <div class="card-body">
+                            <p class="card-text"><b>Status</b>: ${orderTracking.status}</p>
+                            <p class="card-text"><b>Data</b>: ${orderTracking.status_date}</p>
+                        </div>
+                    </div>
+                `);
             }
 
 
@@ -87,7 +96,3 @@ $(document).on('click', '.btn-order-tracking', function (event) {
         })
 
 })
-
-function seachOrderTracking (uuid) {
-
-}

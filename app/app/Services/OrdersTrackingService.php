@@ -10,9 +10,9 @@ class OrdersTrackingService
         protected OrdersTrackingRepositoryInterface $ordersTrackingRepositoryInterface
     ){}
 
-    public function getOrdersStatusByUuid (string $orderUuid)
+    public function getOrderStatusByUuid (string $orderUuid)
     {
-        return $this->ordersTrackingRepositoryInterface->getOrdersStatusByUuid($orderUuid);
+        return $this->ordersTrackingRepositoryInterface->getOrderStatusByUuid($orderUuid);
     }
 
 }

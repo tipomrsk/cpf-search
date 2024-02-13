@@ -2,7 +2,6 @@
 
 namespace App\Services;
 
-use App\Http\Requests\GetUserRequest;
 use App\Repositories\Interface\ReceiversRepositoryInterface;
 use Illuminate\Http\JsonResponse;
 

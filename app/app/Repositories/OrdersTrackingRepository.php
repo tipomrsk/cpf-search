@@ -47,7 +47,7 @@ class OrdersTrackingRepository implements OrdersTrackingRepositoryInterface
      * @param string $orderUuid
      * @return array
      */
-    public function getOrdersStatusByUuid(string $orderUuid): array
+    public function getOrderStatusByUuid(string $orderUuid): array
     {
         try {
             $orderTracking = OrderTracking::select('status', 'status_date')
