@@ -14,7 +14,7 @@ Importante ter em mente também é que com a estrutura atual, qualquer implement
 - **Client**: LogRocket
 - **Server**: UptimeRobot, NetData
 
-> "*Propositalemnte não mencionei **ElasticSearch** para APM, ou **Grafana com Prometheus** porque essas stacks por mais impressionantes que sejam quando prontas, manter envolve um custo muito alto de infra, equipe, disponibilidade...*
+> "*Propositalmente não mencionei **ElasticSearch** para APM, ou **Grafana com Prometheus** porque essas stacks por mais impressionantes que sejam quando prontas, manter envolve um custo muito alto de infra, equipe, disponibilidade...*
 >
 > *Acho que o mais apropriado aqui seria o NewRelic, o freemium é bem completo, além disso, a integração com o Laravel é bem simples e muito completa abrangendo até os logs internos, importante ter em mente que para projetos maiores ter um Repositório de Logs é imprescindível*"
 
