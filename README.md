@@ -1,57 +1,93 @@
-# Rastreio.com
+# [Rastreio.com]()
 
-Esse projeto tem a finalidade de consumir os dados de uma API na Mocky para alimentar um DB e mostrar esses dados em uma tela.
+Serviço de rastrio de encomendas.
+*Repositório para criações*
+## [Documentação da API]()
+
+- [Postman Collection](https://www.postman.com/cloudy-crescent-618085/workspace/tipomrsk-public/collection/10062714-114a0d40-ce0f-4dda-a320-0de010c095e7?action=share&creator=10062714)
+
+#### Consulta e Persiste as Entregas do Mocky
+
+```http
+  GET /api/config/consult-persist-orders
+```
 
 
-# Tecnologias
+#### Consulta e Persiste as Transportadoras do Mocky
 
-- PHP
-- Laravel
-- Nginx
-- MySQL
-- Docker
+```http
+  GET /api/config/consult-persist-company
+```
 
-## Patterns
 
-- Service Repository
-- Form Request
-- API separada do Front-End
+#### Busca as Entregas de um Destinatário
+```http
+  GET /api/receiver/orders?cpf={cpf}
+```
 
-## Outros
+| Parâmetro   | Tipo       | Descrição                                   |
+| :---------- | :--------- | :------------------------------------------ |
+| `cpf`      | `string` | **Obrigatório**. Somente numéricos |
 
-- Axios
-- Bootstrap
-- Componentes
+#### Busca os status de uma entrega
+```http
+  GET /api/order/tracking?uuid={uuid}
+```
 
-## Inciando o Projeto
+| Parâmetro   | Tipo       | Descrição                                   |
+| :---------- | :--------- | :------------------------------------------ |
+| `uuid`      | `string` | **Obrigatório**. Identificador da entrega |
 
-Para Iniciar esse projeto com docker, você tem duas opções:
 
-### Opção 1: Executar o stack-deploy.sh
+### [Por que um query string no cpf e UUID?]()
+Decidi ir por esse caminho pelo Form Request que o Laravel fornece.
+Poderia ir pelo caminho de montar um DTO com [Laravel Data](https://spatie.be/docs/laravel-data/v3/introduction), mas não achei necessário nesse momento.
 
-> É importante notar que nesse script, todas as dependências são instaladas, inclusive o Docker e Docker-Compose, mas TODOS os containers, imagens, builds e etc que existem na máquina atual serão APAGADOS.
 
-### Opção 2: Executar o `.yaml` do diretório `/docker`
+## [Deploy]()
 
-> Será feita uma instalação padrão do projeto, atenção para nomes repetidos dos containers.
+Para fazer deploy do projeto, você pode rodar executar o docker-compose desse projeto, ou executar o stack-deploy.sh
 
-## Importando os dados
-Pela instabilidade do Mocky, optei por preparar 2 endpoints que são responsáveis por executar 2 rotinas.
+```bash
+  bash stack-deploy.sh [OPTION]
+```
+Option:
+- --production
 
-1 - Buscar e persistir as Transportadoras.
-2 - Buscar a persistir as Entregas.
+#### Migrations
+Migrations são executadas junto do container do app. Caso você opte por rodar o serviço separado em um LaraGon, Wallet, XAMPP, Artisan Serve... **NÃO ESQUEÇA DE EXECUTAR AS MIGRATIONS**
 
-Você pode executar tanto pelo Browser, pelo Postman/Insomnia ou afins os seguintes endpoints na seguinte sequencia.
 
-    /api/config/consult-persist-company
+## [Stack, Serviços e Patterns]()
 
-    /api/config/consult-persist-orders
+**Front-end:** Blade, Components, Bootstrap, JavaScript, jQuery, Axios
 
-Assim, você terá todos os dados necessário para acessar a view e efetuar as consultas.
-O container de nginx está apontando para a porta 80 então:
-### Basta acessar 127.0.0.1 para ver a view do projeto.
+**Back-end:** PHP, Laravel
+
+**Infra**: Docker, PHP-FPM, OpCache, NginX
+
+**DB**: MySQL (Migrations e Factories)
+
+**Patterns**: Service Repository, Form Request, Interface,
+
+
+## [Rodando os testes]()
+
+Para rodar os testes, rode o seguinte comando.
+Testes Unitários e de Feature criados com [Pest](https://pestphp.com/). Rode as **Factories** antes dos testes.
+
+```bash
+  ./vendor/bin/pest
+```
+
+
+## [Demonstração]()
+
+![gif](/app/public/img/rastrio.gif)
+
 Para facilitar, seguem alguns CPFs e o que é esperado de retorno para cada um:
 
 1. **54795289042** = Retornará entregas
 2. **12345678901** = Não retornará entregas com erro.
 3. **63079983009** = Não retornará entregas com aviso.
+
