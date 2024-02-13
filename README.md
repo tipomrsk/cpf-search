@@ -4,7 +4,7 @@ Serviço de rastreio de encomendas. Foi desenvolvimento de uma maneira simples o
 
 Essa aplicação foi criada com o front desacoplado do back onde toda a comunicação é feita por uma API. 
 
-> "*Pensei em utilizar Livewire para fazer, ficaria realmente fácil, mas muitas coisas que queria implementar não seria possível. Então fiz desacoplado*"
+> "*Pensei em utilizar Livewire para fazer, ficaria realmente fácil, mas muitas coisas que queria implementar não seriam possíveis. Então fiz desacoplado*"
 
 Importante ter em mente também é que com a estrutura atual, qualquer implementação de serviço de monitoramento fica fácil de ser implementado.
 
@@ -105,7 +105,7 @@ Option:
 - --production
 
 
-> Importante lembrar que o `stack-deplot.sh` é um arquivo que faz uma série de procedimentos, como instalar/atualizar as dependências do sistema, instalar o docker e docker-compose, **REMOVER CONTAINERS, IMAGENS, VOLUMES E ETC**. Ele foi criado para automatizar o deploy em um server novo.
+> Importante lembrar que o `stack-deploy.sh` é um arquivo que faz uma série de procedimentos, como instalar/atualizar as dependências do sistema, instalar o docker e docker-compose, **REMOVER CONTAINERS, IMAGENS, VOLUMES E ETC**. Ele foi criado para automatizar o deploy em um server novo.
 
 #### Migrations
 Migrations são executadas junto do container do app. Caso você opte por rodar o serviço separado em um LaraGon, Wallet, XAMPP, Artisan Serve... **NÃO ESQUEÇA DE EXECUTAR AS MIGRATIONS**
