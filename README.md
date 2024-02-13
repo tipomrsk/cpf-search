@@ -1,6 +1,6 @@
 # [Rastreio.com]()
 
-Serviço de rastrio de encomendas.
+Serviço de rastreio de encomendas.
 *Repositório para criações*
 ## [Documentação da API]()
 
@@ -83,7 +83,7 @@ Testes Unitários e de Feature criados com [Pest](https://pestphp.com/). Rode as
 
 ## [Demonstração]()
 
-![gif](/app/public/img/rastrio.gif)
+![gif](/app/public/img/rastreio.gif)
 
 Para facilitar, seguem alguns CPFs e o que é esperado de retorno para cada um:
 

@@ -59,7 +59,7 @@ function searchOrders () {
 }
 
 /**
- * Evento de click no botão de "Detalhe" para rastrio
+ * Evento de click no botão de "Detalhe" para rastreio
  */
 $(document).on('click', '.btn-order-tracking', function (element) {
 
