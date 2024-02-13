@@ -36,7 +36,7 @@ class CompaniesRepository implements CompaniesRepositoryInterface
             return ['message' => 'Companies persisted successfully', 'code' => Response::HTTP_OK];
 
         } catch (\Exception $e) {
-            return ['message' => $e->getMessage(), 'code' => Response::HTTP_BAD_REQUEST];
+            return ['message' => 'Error to persist', 'code' => Response::HTTP_BAD_REQUEST];
         }
     }
 }
