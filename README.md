@@ -54,17 +54,18 @@ MySQL com as configurações padrões.
 
 - [Postman Collection](https://www.postman.com/cloudy-crescent-618085/workspace/tipomrsk-public/collection/10062714-114a0d40-ce0f-4dda-a320-0de010c095e7?action=share&creator=10062714)
 
-#### Consulta e Persiste as Entregas do Mocky
+É importante executar os dois primeiros endpoints para popular o banco de dados na devida ordem.
 
-```http
-  GET /api/config/consult-persist-orders
-```
-
-
-#### Consulta e Persiste as Transportadoras do Mocky
+#### Consulta e Persiste as Transportadoras do Mocky [Executar Primeiro]
 
 ```http
   GET /api/config/consult-persist-company
+```
+
+#### Consulta e Persiste as Entregas do Mocky [Executar Segundo]
+
+```http
+  GET /api/config/consult-persist-orders
 ```
 
 
