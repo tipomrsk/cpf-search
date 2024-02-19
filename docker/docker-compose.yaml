@@ -18,8 +18,7 @@ services:
     volumes:
       - ../app:/var/www
     depends_on:
-      mysql:
-        condition: service_healthy
+      - mysql
 
   # Nginx
   nginx:

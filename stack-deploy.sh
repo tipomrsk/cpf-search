@@ -33,10 +33,10 @@ docker rmi -f $(docker images -q)
 # AQUI VAO OS PROCESSOS DE DEPLOY EM PROD, MONITORAMENTO, ORGANIZACAO EM CLOUD, ETC
 if [ $1 ] && [ $1 = --production ]
 then      
-    docker_compose_file=/cpf-search/docker/docker-compose.yaml
+    docker_compose_file=./docker/docker-compose.yaml
 
 else
-    docker_compose_file=/cpf-search/docker/docker-compose.yaml
+    docker_compose_file=./docker/docker-compose.yaml
 fi
 
 echo "------------------------------"
