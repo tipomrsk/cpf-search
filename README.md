@@ -108,6 +108,11 @@ Option:
 
 > Importante lembrar que o `stack-deploy.sh` é um arquivo que faz uma série de procedimentos, como instalar/atualizar as dependências do sistema, instalar o docker e docker-compose, **REMOVER CONTAINERS, IMAGENS, VOLUMES E ETC**. Ele foi criado para automatizar o deploy em um server novo.
 
+> Se quiser testar o script, você executar em ambiente de WSL que é rápido para criar e testar, e qualquer problema você pode resetar o ambiente.
+> Siga o `aws-launch-template.sh` para criar um ambiente de testes. 
+
+> O `.env` está configurado para rodar com Docker, caso queira rodar em outro serviço lembre de alterar as configurações. 
+
 #### Migrations
 Migrations são executadas junto do container do app. Caso você opte por rodar o serviço separado em um LaraGon, Wallet, XAMPP, Artisan Serve... **NÃO ESQUEÇA DE EXECUTAR AS MIGRATIONS**
 
