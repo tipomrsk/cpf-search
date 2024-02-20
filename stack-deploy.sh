@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# TESTANDO COISAS DIFERENTES AQUI
 echo "----------------------------"
 echo "-- Atualizando o ambiente --"
 echo "----------------------------"
@@ -9,15 +10,13 @@ apt install -y nano git zip unzip jq
 echo "-------------------------"
 echo "-- Instalando o docker --"
 echo "-------------------------"
-curl -fsSL https://get.docker.com/ | bash
+apt install -y docker.io
 
 # DOCKER COMPOSE - UBUNTU X86
 echo "--------------------------------"
 echo "-- Instalado o docker compose --"
 echo "--------------------------------"
-curl -L "https://github.com/docker/compose/releases/download/1.19.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-chmod +x /usr/local/bin/docker-compose
-ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
+apt install -y docker-compose
 
 # REMOVE TODAS AS IMAGENS E CONTAINERS DA VM
 echo "------------------------------------"
