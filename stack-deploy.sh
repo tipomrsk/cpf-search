@@ -3,8 +3,8 @@
 echo "----------------------------"
 echo "-- Atualizando o ambiente --"
 echo "----------------------------"
-apt-get update -y
-apt-get install -y nano git zip unzip jq
+apt update -y
+apt install -y nano git zip unzip jq
 
 echo "-------------------------"
 echo "-- Instalando o docker --"
@@ -15,7 +15,7 @@ curl -fsSL https://get.docker.com/ | bash
 echo "--------------------------------"
 echo "-- Instalado o docker compose --"
 echo "--------------------------------"
-curl -L "https://github.com/docker/compose/releases/download/1.26.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+curl -L "https://github.com/docker/compose/releases/download/2.23.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 chmod +x /usr/local/bin/docker-compose
 ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
 
@@ -23,11 +23,7 @@ ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
 echo "------------------------------------"
 echo "-- Removendo resíduos de serviços --"
 echo "------------------------------------"
-docker container stop -f $(docker ps -aq)
-docker container rm -f $(docker ps -aq)
-docker volume rm -f $(docker volume ls)
-docker rmi -f $(docker images -q)
-
+docker system prune -a -f
 
 # CONDICIONAL DE PROD
 # AQUI VAO OS PROCESSOS DE DEPLOY EM PROD, MONITORAMENTO, ORGANIZACAO EM CLOUD, ETC
