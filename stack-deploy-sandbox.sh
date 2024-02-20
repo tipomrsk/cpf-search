@@ -29,11 +29,11 @@ docker system prune -a -f
 if [ $1 ] && [ $1 = --production ]
 then
 #  Define o arquivo com o path root porque no script da aws ele clone o repo no root(/) do sistema
-    docker_compose_file=/rastrio.com/docker/docker-compose.yaml
+    docker_compose_file=/rastreio.com/docker/docker-compose.yaml
 
 else
 #  Define o arquivo com o path para o diretorio de dentro do projeto para evitar erros no script em sandbox
-    docker_compose_file=/rastrio.com/docker/docker-compose.yaml
+    docker_compose_file=/rastreio.com/docker/docker-compose.yaml
 fi
 
 echo "------------------------------"
