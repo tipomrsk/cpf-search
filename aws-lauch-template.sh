@@ -13,7 +13,7 @@ rm -rf /rastreio.com
 echo "----------------------------"
 echo "-- Clonando o repositório --"
 echo "----------------------------"
-git clone ${REPO_LINK}
+git clone ${REPO_LINK} /rastreio.com
 
 echo "----------------------------"
 echo "-- Atualizando o ambiente --"
