@@ -99,7 +99,7 @@ Poderia ir pelo caminho de montar um DTO com [Laravel Data](https://spatie.be/do
 Para fazer deploy do projeto, você pode rodar executar o docker-compose desse projeto, ou executar o stack-deploy.sh
 
 ```bash
-  bash stack-deploy.sh [OPTION]
+  sudo bash stack-deploy.sh [OPTION]
 ```
 
 Option:
