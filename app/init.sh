@@ -29,14 +29,3 @@ echo "------------------------------"
 
 # Inicia o PHP-FPM
 php-fpm
-
-echo "------------------------------"
-echo "------- cURL populate DB -----"
-echo "------------------------------"
-
-curl http://127.0.0.1/api/config/consult-persist-company
-curl http://127.0.0.1/api/config/consult-persist-orders
-
-echo "------------------------------"
-echo "-- FIM cURL  --"
-echo "------------------------------"
