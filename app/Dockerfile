@@ -22,5 +22,3 @@ ADD php.ini /usr/local/etc/php/php.ini
 ADD php-fpm.conf /usr/local/etc/php-fpm.conf
 ADD www.conf /usr/local/etc/php-fpm.d/www.conf
 ADD opcache.ini /usr/local/etc/php/conf.d/opcache.ini
-
-RUN bash /var/www/init.sh
