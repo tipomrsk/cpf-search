@@ -10,7 +10,6 @@ RUN apt-get install -y unzip zip wget nano curl
 
 RUN docker-php-ext-install opcache
 RUN docker-php-ext-install pdo_mysql
-RUN docker-php-ext-enable xdebug
 
 # Instala o Composer
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
@@ -23,4 +22,5 @@ ADD php.ini /usr/local/etc/php/php.ini
 ADD php-fpm.conf /usr/local/etc/php-fpm.conf
 ADD www.conf /usr/local/etc/php-fpm.d/www.conf
 ADD opcache.ini /usr/local/etc/php/conf.d/opcache.ini
-ADD xdebug.ini /usr/local/etc/php/conf.d/xdebug.ini
+
+RUN bash /var/www/init.sh
