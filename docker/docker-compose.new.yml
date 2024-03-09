@@ -10,7 +10,7 @@ services:
     restart: always
     container_name: app
     working_dir: /var/www
-    command: bash init.sh
+#    command: bash init.sh
     hostname: sandbox.cpf-search
     build:
       context: ../app
