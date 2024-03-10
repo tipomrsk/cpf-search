@@ -14,20 +14,6 @@ services:
     depends_on:
       mysql:
         condition: service_healthy
-
-  nginx:
-    restart: always
-    image: nginx:alpine
-    container_name: nginx
-    volumes:
-      - ../nginx/config/conf.d:/etc/nginx/conf.d
-      - ../nginx/config/nginx.conf:/etc/nginx/nginx.conf
-      - ../app:/var/www
-    depends_on:
-      - app
-    ports:
-      - 80:80
-
   # MySQL
   mysql:
     image: mysql
