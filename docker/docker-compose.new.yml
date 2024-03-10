@@ -11,6 +11,8 @@ services:
     working_dir: /var/www
     command: bash ./init.sh
     image: tipomrsk/rastreio.com:latest
+    ports:
+      - 9000:9000
     depends_on:
       mysql:
         condition: service_healthy
