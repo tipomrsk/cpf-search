@@ -2,8 +2,6 @@ FROM php:8.1-fpm
 
 WORKDIR /var/www
 
-RUN pecl install xdebug
-
 # Instala as dependências
 RUN apt-get update
 RUN apt-get install -y unzip zip wget nano curl
@@ -22,3 +20,6 @@ ADD php.ini /usr/local/etc/php/php.ini
 ADD php-fpm.conf /usr/local/etc/php-fpm.conf
 ADD www.conf /usr/local/etc/php-fpm.d/www.conf
 ADD opcache.ini /usr/local/etc/php/conf.d/opcache.ini
+
+# Copia o código fonte para a imagem
+ADD . .
