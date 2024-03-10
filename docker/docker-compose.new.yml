@@ -6,19 +6,11 @@ volumes:
 services:
   # API
   app:
-    image: app
     restart: always
     container_name: app
     working_dir: /var/www
-#    command: bash /var/www/init.sh
-    hostname: sandbox.cpf-search
-    build:
-      context: ../app
-      dockerfile: Dockerfile
-    volumes:
-      - ../app:/var/www
-    ports:
-      - 9000:9000
+    command: bash ./init.sh
+    image: tipomrsk/rastreio.com:latest
     depends_on:
       mysql:
         condition: service_healthy
