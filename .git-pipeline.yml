@@ -1,2 +1,40 @@
 # Nenhuma configuracao adicionada a esse arquivo
 # Criado apenas para exemplificar a organizacao dos arquivos no repositorio
+
+name: Testes and Docker Build
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+
+        steps:
+          - name: Checkout
+            uses: actions/checkout@v2
+
+          - name: Run tests
+            run: ./vendor/bin/pest
+
+          - name: Set up Docker Buildx
+            uses: docker/setup-buildx-action@v1
+
+          - name: Login to DockerHub
+            uses: docker/login-action@v1
+            with:
+            username: ${{ env.DOCKER_USERNAME }}
+            password: ${{ env.DOCKER_PASSWORD }}
+
+          - name: Build and push
+            uses: docker/build-push-action@v2
+            with:
+            context: .
+            file: ./Dockerfile
+            push: true
+            tags: tipomrsk/rastreio.com:latest
