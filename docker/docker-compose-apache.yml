@@ -8,11 +8,8 @@ services:
   app:
     restart: always
     container_name: app
-    working_dir: /var/www/html
-#    command: bash ./init-apache.sh
+    command: bash /init-apache.sh
     image: tipomrsk/rastreio.com-apache:latest
-    volumes:
-      - ../app:/var/www/html
     ports:
       - 9000:80
     depends_on:
