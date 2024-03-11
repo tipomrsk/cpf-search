@@ -12,11 +12,11 @@ services:
     restart: always
     container_name: app
     working_dir: /var/www
-    command: bash ./init.sh
+    command: bash ./init-fpm.sh
     hostname: sandbox.cpf-search
     build:
       context: ../app
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile-fpm
     volumes:
       - ../app:/var/www
     depends_on:
