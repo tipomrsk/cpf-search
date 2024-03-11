@@ -8,9 +8,9 @@ composer update
 echo "------------------------------"
 echo "---- SETANDO PERMISSOES ------"
 echo "------------------------------"
-chown -R www-data:www-data /var/www
-chmod -R 755 /var/www/storage
-chmod -R 755 /var/www/bootstrap
+chown -R www-data:www-data /var/www/html
+chmod -R 755 /var/www/html/storage
+chmod -R 755 /var/www/html/bootstrap
 
 echo "------------------------------"
 echo "------ FIM PERMISSOES --------"
@@ -27,5 +27,5 @@ echo "------------------------------"
 echo "------ FIM PHP ARTISAN -------"
 echo "------------------------------"
 
-# Inicia o PHP-FPM
-php-fpm
+# Inicia o serviço do php apache dockerizado
+apache2-foreground

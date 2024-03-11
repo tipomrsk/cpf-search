@@ -8,11 +8,13 @@ services:
   app:
     restart: always
     container_name: app
-    working_dir: /var/www
-    command: bash ./init.sh
-    image: tipomrsk/rastreio.com:latest
+    working_dir: /var/www/html
+    command: bash ./init-apache.sh
+    image: tipomrsk/rastreio.com-apache:latest
+    volumes:
+      - ../app:/var/www/html
     ports:
-      - 9000:9000
+      - 9000:80
     depends_on:
       mysql:
         condition: service_healthy
