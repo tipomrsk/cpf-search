@@ -10,7 +10,8 @@ apt install -y nano git zip unzip jq
 echo "-------------------------"
 echo "-- Instalando o docker --"
 echo "-------------------------"
-apt install -y docker.io
+curl -fsSL https://get.docker.com/ | bash #apt install -y docker.io
+
 
 # DOCKER COMPOSE - UBUNTU X86
 echo "--------------------------------"
